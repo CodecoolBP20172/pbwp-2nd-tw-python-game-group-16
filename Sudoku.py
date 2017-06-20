@@ -1,5 +1,6 @@
 import random
 import os
+import string
 player_input = 8
 row = 0
 column = "q"
@@ -22,6 +23,8 @@ gx = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 hx = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 ix = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
+x_list = [ax, bx, cx, dx, ex, fx, gx, hx, ix]
+
 a1 = [5, 3, 4, 6, 7, 8, 9, 1, 2]
 b1 = [6, 7, 2, 1, 9, 5, 3, 4, 8]
 c1 = [1, 9, 8, 3, 4, 2, 5, 6, 7]
@@ -33,53 +36,21 @@ h1 = [2, 8, 7, 4, 1, 9, 6, 3, 5]
 i1 = [3, 4, 5, 2, 8, 6, 1, 7, 9]
 
 
+def replace_null():
+    for item in range(9): 
+        for iteration in range(9): 
+            if x_list[item][iteration] == 0:
+                x_list[item][iteration] = ""
+
+
 def x_map():
     print("     1  2  3   4  5  6   7  8  9")
-    print("  a",
-          ax[0:3],
-          ax[3:6],
-          ax[6:9],
-          '\n',
-          ' b',
-          bx[0:3],
-          bx[3:6],
-          bx[6:9],
-          '\n',
-          ' c',
-          cx[0:3],
-          cx[3:6],
-          cx[6:9],
-          '\n')
-    print("  d",
-          dx[0:3],
-          dx[3:6],
-          dx[6:9],
-          '\n',
-          ' e',
-          ex[0:3],
-          ex[3:6],
-          ex[6:9],
-          '\n',
-          ' f',
-          fx[0:3],
-          fx[3:6],
-          fx[6:9],
-          '\n')
-    print("  g",
-          gx[0:3],
-          gx[3:6],
-          gx[6:9],
-          '\n',
-          ' h',
-          hx[0:3],
-          hx[3:6],
-          hx[6:9],
-          '\n',
-          ' i',
-          ix[0:3],
-          ix[3:6],
-          ix[6:9],
-          '\n')
+    print("  a", ax[0:3], ax[3:6], ax[6:9], '\n', ' b', bx[0:3], bx[3:6], bx[6:9], '\n', ' c',
+          cx[0:3], cx[3:6], cx[6:9], '\n')
+    print("  d", dx[0:3], dx[3:6], dx[6:9], '\n', ' e', ex[0:3], ex[3:6], ex[6:9], '\n', ' f',
+          fx[0:3], fx[3:6], fx[6:9], '\n')
+    print("  g", gx[0:3], gx[3:6], gx[6:9], '\n', ' h', hx[0:3], hx[3:6], hx[6:9], '\n', ' i',
+          ix[0:3], ix[3:6], ix[6:9], '\n')
 
 
 def generator():
@@ -129,7 +100,7 @@ def change():
                 ix.insert(column, player_input)
             os.system('clear')
             x_map()
-            #print(row, column, player_input)
+            # print(row, column, player_input)
     except ValueError:
         print("Have you finished the game? ")
         end_game = input("1: No, 2: Yes ")
@@ -163,6 +134,7 @@ if mapx == 1:
     play_area = ix
     source_list = i1
     generator()
+    replace_null()
     x_map()
 
 while not end_game == 3:
@@ -191,6 +163,7 @@ while not end_game == 3:
         end_game = 3
     else:
         os.system('clear')
+        replace_null()
         x_map()
         print("Are you sure about that?")
         end_game = 1
