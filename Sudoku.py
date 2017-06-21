@@ -23,6 +23,8 @@ gx = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 hx = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 ix = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
+abc_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
+
 x_list = [ax, bx, cx, dx, ex, fx, gx, hx, ix]
 
 a1 = [5, 3, 4, 6, 7, 8, 9, 1, 2]
@@ -44,13 +46,17 @@ def replace_null():
 
 
 def x_map():
-    print("     1  2  3   4  5  6   7  8  9")
-    print("  a",('{:>1}  {:>1}  {:>1}'.format(ax[0], ax[1], ax[2])))#, ax[3:6], ax[6:9]), '\n', ' b', bx[0:3], bx[3:6], bx[6:9], '\n', ' c',
-          # cx[0:3], cx[3:6], cx[6:9], '\n')
-    print("  d", dx[0:3], dx[3:6], dx[6:9], '\n', ' e', ex[0:3], ex[3:6], ex[6:9], '\n', ' f',
-          fx[0:3], fx[3:6], fx[6:9], '\n')
-    print("  g", gx[0:3], gx[3:6], gx[6:9], '\n', ' h', hx[0:3], hx[3:6], hx[6:9], '\n', ' i',
-          ix[0:3], ix[3:6], ix[6:9], '\n')
+    print("   1  2  3  4  5  6  7  8  9")
+    for item in range(len(x_list)):
+        if item == 2 or item == 5:
+            print(abc_list[item], ('[{:>1}  {:>1}  {:>1}][{:>1}  {:>1}  {:>1}][{:>1}  {:>1}  {:>1}]'
+                                   .format(x_list[item][0], x_list[item][1], x_list[item][2], x_list[item][3],
+                                           x_list[item][4], x_list[item][5], x_list[item][6], x_list[item][7],
+                                           x_list[item][8])), '\n')
+        else:
+            print(abc_list[item], ('[{:>1}  {:>1}  {:>1}][{:>1}  {:>1}  {:>1}][{:>1}  {:>1}  {:>1}]'
+                                   .format(x_list[item][0], x_list[item][1], x_list[item][2], x_list[item][3], x_list[item][4],
+                                           x_list[item][5], x_list[item][6], x_list[item][7], x_list[item][8])))
 
 
 def generator():
