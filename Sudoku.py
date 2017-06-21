@@ -64,6 +64,7 @@ def x_map():
 
 def generator():
     for i in range(random.randint(1, 7)):
+        print("")
         add_ = random.randint(0, 8)
         del play_area[add_]
         play_area.insert(add_, source_list[add_])
@@ -99,35 +100,12 @@ def change():
 
 
 if mapx == 1:
-    play_area = ax
-    source_list = a1
-    generator()
-    play_area = bx
-    source_list = b1
-    generator()
-    play_area = cx
-    source_list = c1
-    generator()
-    play_area = dx
-    source_list = d1
-    generator()
-    play_area = ex
-    source_list = e1
-    generator()
-    play_area = fx
-    source_list = f1
-    generator()
-    play_area = gx
-    source_list = g1
-    generator()
-    play_area = hx
-    source_list = h1
-    generator()
-    play_area = ix
-    source_list = i1
-    generator()
-    replace_null()
-    x_map()
+    for item in range(len(x_list)):
+        play_area = x_list[item]
+        source_list = complete_list[item]
+        generator()
+        replace_null()
+        x_map()
 
 while not end_game == 3:
     change()
