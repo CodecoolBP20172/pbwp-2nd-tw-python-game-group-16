@@ -1,15 +1,9 @@
 import random
 import os
 import string
-player_input = 8
-row = 0
-column = "q"
 mapx = 1
 end_game = 1
 x = "x"
-add_ = 10
-play_area = 0
-source_list = 0
 random_number = 1
 end = 0
 
@@ -58,18 +52,28 @@ def x_map():
                                            x_list[item][8])))
 
 
-def generator():
-    for i in range(random.randint(1, 7)):
-        print("")
-        add_ = random.randint(0, 8)
-        del play_area[add_]
-        play_area.insert(add_, source_list[add_])
+def generator(diff):
+    if diff == 1:
+        for i in range(7):
+            print("")
+            add_ = random.randint(0, 8)
+            del play_area[add_]
+            play_area.insert(add_, source_list[add_])
+    elif diff == 2:
+        for i in range(4):
+            print("")
+            add_ = random.randint(0, 8)
+            del play_area[add_]
+            play_area.insert(add_, source_list[add_])
+    elif diff == 3:
+        for i in range(2):
+            print("")
+            add_ = random.randint(0, 8)
+            del play_area[add_]
+            play_area.insert(add_, source_list[add_])
 
 
 def change():
-    global player_input
-    global row
-    global column
     global end_game
     list_index = 0
     try:
@@ -96,10 +100,16 @@ def change():
 
 
 if mapx == 1:
+    print("Please select a difficulty level!", "\n", "1: Easy,", "\n", "2: Medium", "\n", "3: Hardcore")
+    diff = int(input())
+    while diff == 0 or diff > 3:
+        os.system('clear')
+        print("That isn't a valid level!", "\n", "1: Easy,", "\n", "2: Medium", "\n", "3: Hardcore")
+        diff = int(input())
     for item in range(len(x_list)):
         play_area = x_list[item]
         source_list = complete_list[item]
-        generator()
+        generator(diff)
         replace_null()
         os.system('clear')
         x_map()
