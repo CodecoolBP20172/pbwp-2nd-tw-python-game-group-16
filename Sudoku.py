@@ -88,7 +88,7 @@ def change():
                     del x_list[list_index][column]
                     x_list[list_index].insert(column, player_input)
                 else:
-                    print("You can't modify that")
+                    print('\x1b[0;30;41m' + "You can't modify that" + '\x1b[0m')
             x_map()
     except ValueError:
         print("Have you finished the game? ")
