@@ -37,10 +37,12 @@ g1 = [9, 6, 1, 5, 3, 7, 2, 8, 4]
 h1 = [2, 8, 7, 4, 1, 9, 6, 3, 5]
 i1 = [3, 4, 5, 2, 8, 6, 1, 7, 9]
 
+complete_list = [a1, b1, c1, d1, e1, f1, g1, h1, i1]
+
 
 def replace_null():
-    for item in range(9): 
-        for iteration in range(9): 
+    for item in range(9):
+        for iteration in range(9):
             if x_list[item][iteration] == 0:
                 x_list[item][iteration] = ""
 
@@ -55,8 +57,9 @@ def x_map():
                                            x_list[item][8])), '\n')
         else:
             print(abc_list[item], ('[{:>1}  {:>1}  {:>1}][{:>1}  {:>1}  {:>1}][{:>1}  {:>1}  {:>1}]'
-                                   .format(x_list[item][0], x_list[item][1], x_list[item][2], x_list[item][3], x_list[item][4],
-                                           x_list[item][5], x_list[item][6], x_list[item][7], x_list[item][8])))
+                                   .format(x_list[item][0], x_list[item][1], x_list[item][2], x_list[item][3],
+                                           x_list[item][4], x_list[item][5], x_list[item][6], x_list[item][7],
+                                           x_list[item][8])))
 
 
 def generator():
@@ -71,42 +74,25 @@ def change():
     global row
     global column
     global end_game
+    list_index = 0
     try:
         while not end_game == 3:
             player_input = int(input("Please enter a number: "))
             row = input("Row (Letter): ")
             column = int(input("Column (Number): "))
             column = column - 1
-            if row == "a":
-                del ax[column]
-                ax.insert(column, player_input)
-            elif row == "b":
-                del bx[column]
-                bx.insert(column, player_input)
-            elif row == "c":
-                del cx[column]
-                cx.insert(column, player_input)
-            elif row == "d":
-                del dx[column]
-                dx.insert(column, player_input)
-            elif row == "e":
-                del ex[column]
-                ex.insert(column, player_input)
-            elif row == "f":
-                del fx[column]
-                fx.insert(column, player_input)
-            elif row == "g":
-                del gx[column]
-                gx.insert(column, player_input)
-            elif row == "h":
-                del hx[column]
-                hx.insert(column, player_input)
-            elif row == "i":
-                del ix[column]
-                ix.insert(column, player_input)
             os.system('clear')
+            if row in abc_list:
+                list_index = abc_list.index(row)
+                if x_list[list_index][column] == "":
+                    del x_list[list_index][column]
+                    x_list[list_index].insert(column, player_input)
+                elif x_list[list_index][column] != "" and x_list[list_index][column] != complete_list[list_index][column]:
+                    del x_list[list_index][column]
+                    x_list[list_index].insert(column, player_input)
+                else:
+                    print("You can't modify that")
             x_map()
-            # print(row, column, player_input)
     except ValueError:
         print("Have you finished the game? ")
         end_game = input("1: No, 2: Yes ")
