@@ -80,33 +80,42 @@ def change():
     try:
         while not end_game == 3:
             player_input = int(input("Please enter a number or a letter if you think you are done: "))
-            row = input("Row (Letter): ")
-            try:
-                column = int(input("Column (Number): "))
-                column = column - 1
-            except ValueError:
+            if player_input > 0 and player_input < 10:
+                row = input("Row (Letter): ")
+                try:
+                    column = int(input("Column (Number): "))
+                    column = column - 1
+                except ValueError:
+                    os.system('clear')
+                    print('\x1b[0;30;41m' + "Not a valid coloum" + '\x1b[0m')
+                    x_map()
+                    continue
+
+                if column < 1 or column > 9:
+                    os.system('clear')
+                    print('\x1b[0;30;41m' + "Not a valid number" + '\x1b[0m')
+                    x_map()
+                    continue
                 os.system('clear')
-                print("Not valid column!")
+                if row in abc_list:
+                    list_index = abc_list.index(row)
+                    if x_list[list_index][column] == "":
+                        del x_list[list_index][column]
+                        x_list[list_index].insert(column, player_input)
+                    elif x_list[list_index][column] != "" and x_list[list_index][column] != complete_list[list_index][column]:
+                        del x_list[list_index][column]
+                        x_list[list_index].insert(column, player_input)
+                    else:
+                        print('\x1b[0;30;41m' + "You can't modify that" + '\x1b[0m')
+                else:
+                    print('\x1b[0;30;41m' + "Not a valid row" + '\x1b[0m')
+                x_map()
+            else:
+                os.system('clear')
+                print('\x1b[0;30;41m' + "Not a valid number" + '\x1b[0m')
                 x_map()
                 continue
 
-            if column < 1 or column > 9:
-                os.system('clear')
-                print("Not a valid number!")
-                x_map()
-                continue
-            os.system('clear')
-            if row in abc_list:
-                list_index = abc_list.index(row)
-                if x_list[list_index][column] == "":
-                    del x_list[list_index][column]
-                    x_list[list_index].insert(column, player_input)
-                elif x_list[list_index][column] != "" and x_list[list_index][column] != complete_list[list_index][column]:
-                    del x_list[list_index][column]
-                    x_list[list_index].insert(column, player_input)
-                else:
-                    print('\x1b[0;30;41m' + "You can't modify that" + '\x1b[0m')
-            x_map()
     except ValueError:
         print("Have you finished the game? ")
         end_game = int(input("1: No, 2: Yes "))
@@ -161,4 +170,3 @@ while not end_game == 3:
         x_map()
         print("Are you sure about that?")
         end_game = 1
-        
