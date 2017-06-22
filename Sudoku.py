@@ -1,11 +1,7 @@
 import random
 import os
 import string
-mapx = 1
 end_game = 1
-x = "x"
-random_number = 1
-end = 0
 
 x_list = [[0, 0, 0, 0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -85,7 +81,7 @@ def change():
         while not end_game == 3:
             player_input = int(input("Please enter a number or a letter if you think you are done: "))
             row = input("Row (Letter): ")
-            try: 
+            try:
                 column = int(input("Column (Number): "))
                 column = column - 1
             except ValueError:
@@ -116,39 +112,37 @@ def change():
         end_game = int(input("1: No, 2: Yes "))
 
 
-if mapx == 1:
-    print(
-          "   .d8888b.               888          888               888", "\n"
-          "  d88P  Y88b              888          888               888", "\n"
-          "  Y88b.                   888          888               888", "\n"
-          "   Y888b.   888  888  .d88888  .d88b.  888  888 888  888 888 ", "\n"
-          "      Y88b. 888  888 d88  888 d88  88b 888 .88P 888  888 888 ", "\n"
-          "        888 888  888 888  888 888  888 888888K  888  888 Y8P ", "\n"
-          " Y88b  d88P Y88b 888 Y88b 888 Y88..88P 888  88b Y88b 888    ", "\n"
-          "   Y8888P     Y88888   Y88888   Y88P   888  888   Y88888 888 ", "\n")
-    print("Please select a difficulty level!", "\n", "1: Easy,", "\n", "2: Medium", "\n", "3: Hardcore")
-    diff = int(input())
-    if diff == 666:
-        for item in range(len(x_list)):
-            play_area = x_list[item]
-            source_list = complete_list[item]
-            generator(diff)
-            replace_null()
-            os.system('clear')
-            x_map()
-    else:
-        while diff == 0 or diff > 3:
-            os.system('clear')
-            print("That isn't a valid level!", "\n", "1: Easy,", "\n", "2: Medium", "\n", "3: Hardcore")
-            diff = int(input())
-        for item in range(len(x_list)):
-            play_area = x_list[item]
-            source_list = complete_list[item]
-            generator(diff)
-            replace_null()
-            os.system('clear')
-            x_map()
-
+print(
+      "   .d8888b.               888          888               888", "\n"
+      "  d88P  Y88b              888          888               888", "\n"
+      "  Y88b.                   888          888               888", "\n"
+      "   Y888b.   888  888  .d88888  .d88b.  888  888 888  888 888 ", "\n"
+      "      Y88b. 888  888 d88  888 d88  88b 888 .88P 888  888 888 ", "\n"
+      "        888 888  888 888  888 888  888 888888K  888  888 Y8P ", "\n"
+      " Y88b  d88P Y88b 888 Y88b 888 Y88..88P 888  88b Y88b 888    ", "\n"
+      "   Y8888P     Y88888   Y88888   Y88P   888  888   Y88888 888 ", "\n")
+print("Please select a difficulty level!", "\n", "1: Easy,", "\n", "2: Medium", "\n", "3: Hardcore")
+diff = int(input())
+if diff == 666:
+    for item in range(len(x_list)):
+        play_area = x_list[item]
+        source_list = complete_list[item]
+        generator(diff)
+        replace_null()
+        os.system('clear')
+        x_map()
+else:
+    while diff == 0 or diff > 3:
+        os.system('clear')
+        print("That isn't a valid level!", "\n", "1: Easy,", "\n", "2: Medium", "\n", "3: Hardcore")
+        diff = int(input())
+    for item in range(len(x_list)):
+        play_area = x_list[item]
+        source_list = complete_list[item]
+        generator(diff)
+        replace_null()
+        os.system('clear')
+        x_map()
 while not end_game == 3:
     change()
     if x_list == complete_list and end_game == 2:
@@ -167,3 +161,4 @@ while not end_game == 3:
         x_map()
         print("Are you sure about that?")
         end_game = 1
+        
