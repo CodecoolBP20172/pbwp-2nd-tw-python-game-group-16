@@ -85,8 +85,15 @@ def change():
         while not end_game == 3:
             player_input = int(input("Please enter a number or a letter if you think you are done: "))
             row = input("Row (Letter): ")
-            column = int(input("Column (Number): "))
-            column = column - 1
+            try: 
+                column = int(input("Column (Number): "))
+                column = column - 1
+            except ValueError:
+                os.system('clear')
+                print("Not valid column!")
+                x_map()
+                continue
+
             if column < 1 or column > 9:
                 os.system('clear')
                 print("Not a valid number!")
