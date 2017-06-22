@@ -102,7 +102,8 @@ def change():
                     if x_list[list_index][column] == "":
                         del x_list[list_index][column]
                         x_list[list_index].insert(column, player_input)
-                    elif x_list[list_index][column] != "" and x_list[list_index][column] != complete_list[list_index][column]:
+                    elif x_list[list_index][column] != "" and \
+                            x_list[list_index][column] != complete_list[list_index][column]:
                         del x_list[list_index][column]
                         x_list[list_index].insert(column, player_input)
                     else:
