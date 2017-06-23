@@ -91,7 +91,7 @@ def change():
                     x_map()
                     continue
 
-                if column < 1 or column > 9:
+                if column < 0 or column > 9:
                     os.system('clear')
                     print('\x1b[0;30;41m' + "Not a valid number" + '\x1b[0m')
                     x_map()
